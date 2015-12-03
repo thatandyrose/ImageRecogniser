@@ -10,7 +10,7 @@ class ReferenceImage < ActiveRecord::Base
   after_commit :delete_from_search_apis, on: :destroy
 
   def file_name
-    File.basename(image.file.path)
+    File.basename(image.file.path) if image && image.file
   end
 
   def self.search_apis(file)

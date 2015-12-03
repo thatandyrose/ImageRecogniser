@@ -7,7 +7,7 @@ RSpec.feature 'create entry reference image' do
 
     before do
       visit new_entry_reference_image_path(entry)
-      attach_file :reference_image_image, test_image_path
+      attach_file 'images_', test_image_path
       click_on 'Create image'
       entry.reload
     end

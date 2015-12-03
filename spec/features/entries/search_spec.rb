@@ -8,8 +8,10 @@ RSpec.feature 'search entries' do
     let!(:reference_image){ FactoryGirl.create :reference_image, entry: entry }
 
     before do
+      allow(ReferenceImage).to receive(:search_apis).and_return(reference_image)
+
       visit search_entries_path
-      attach_file :search_image, invoke_search_entries_path
+      attach_file :search_image, test_image_path
       click_on 'Search'
     end
 
