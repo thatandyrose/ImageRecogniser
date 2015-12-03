@@ -17,7 +17,7 @@ else
       aws_secret_access_key: ENV['AWS_SECRET_KEY']
     }
     
-    config.fog_directory = 'reference_images'
+    config.fog_directory = 'referenceimages'
   end
 
 end

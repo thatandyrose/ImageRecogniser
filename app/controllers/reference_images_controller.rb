@@ -6,15 +6,17 @@ class ReferenceImagesController < ApplicationController
     @reference_image = @entry.reference_images.new
   end
 
-  def create
-    @reference_image = @entry.reference_images.new strong_params
+  def create_multiple
+    ReferenceImage.transaction do
 
-    if @reference_image.save
-      redirect_to entry_path(@entry)
-    else
-      render :new
+      params[:images].each do |file|
+        @entry.reference_images.create! image: file
+      end
+      
     end
-
+    
+    
+    redirect_to entry_path(@entry)
   end
 
   def destroy
@@ -29,11 +31,7 @@ class ReferenceImagesController < ApplicationController
   end
 
   def load_reference_image
-    @reference_image = @entry.reference_images.find params[:id]
-  end
-
-  def strong_params
-    params.require(:reference_image).permit :image
+    @reference_image = @entry.reference_images.friendly.find params[:id]
   end
 
 end

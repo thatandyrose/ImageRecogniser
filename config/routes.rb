@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'entries#index'
+  root 'entries#search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   resources :entries, except: [:destroy] do
-    resources :reference_images, only: [:new, :create, :destroy]
+    get :search, on: :collection
+    post :invoke_search, on: :collection
+    resources :reference_images, only: [:new, :destroy] do
+      post :create_multiple, on: :collection
+    end
   end
 
   # Example resource route with options:

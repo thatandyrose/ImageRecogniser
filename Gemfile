@@ -16,6 +16,9 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem "font-awesome-rails"
+gem 'httparty'
+gem 'httmultiparty'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development do
   gem 'better_errors'

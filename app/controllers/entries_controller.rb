@@ -34,6 +34,17 @@ class EntriesController < ApplicationController
     end
   end
 
+  def search
+  end
+
+  def invoke_search
+    if reference_image = ReferenceImage.search_apis(params[:search_image])
+      @entry = reference_image.entry
+    end
+
+    render :search
+  end
+
   private
 
   def load_entry

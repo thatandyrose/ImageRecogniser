@@ -1,0 +1,11 @@
+section
+  .jumbotron
+    = form_tag(invoke_search_entries_path, class: 'form', multipart: true) do |f|
+      .form-group
+        = file_field_tag :search_image
+
+      = submit_tag 'Search', class: 'submit'
+  
+  - if @entry
+    h2 Found entry
+    h3 = link_to @entry.name, @entry
