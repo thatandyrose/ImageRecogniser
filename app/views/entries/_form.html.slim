@@ -1,0 +1,9 @@
+= form_for(@entry, html:{class: 'form'}) do |f|
+  = render 'shared/form_error_summary', f: f
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+
+  = f.submit "#{f.object.new_record? ? 'Create and add images' : 'Update entry'}", class: 'submit'
+  hr
+  a href='#{entries_path}' back to entries

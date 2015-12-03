@@ -1,0 +1,12 @@
+.row: .col-md-6.col-md-offset-3
+  h1 Entries
+  p = link_to 'Create new entry', new_entry_path
+  section: table.table
+    thead: tr
+      th name
+      th images
+    tbody
+      - @entries.each do |entry|
+        tr
+          td = link_to entry.name, entry_path(entry)
+          td = entry.reference_images.count

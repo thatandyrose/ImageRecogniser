@@ -1,0 +1,8 @@
+= form_for([@entry, @reference_image], html: { class: 'form', multipart: true } ) do |f|
+  = render 'shared/form_error_summary', f: f
+  .form-group
+    = f.file_field :image
+
+  = f.submit 'Create image', class: 'submit'
+  hr
+  a href='#{entries_path}' back to entries

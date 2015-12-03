@@ -7,19 +7,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
-
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-end
-
-
 gem 'bootstrap-sass'
 gem 'figaro'
 gem 'pg'
 gem 'slim-rails'
 gem 'thin'
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
+gem "font-awesome-rails"
 
 group :development do
   gem 'better_errors'
@@ -34,15 +30,14 @@ group :development do
 end
 
 group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
-end
-
-group :production do
-  gem 'rails_12factor'
 end
 
 group :test do
@@ -52,3 +47,6 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+group :production do
+  gem 'rails_12factor'
+end

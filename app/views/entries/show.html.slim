@@ -1,0 +1,18 @@
+section
+  .jumbotron
+    h1: a href='#{edit_entry_path(@entry)}'
+      | #{@entry.name}   
+      small: i.fa.fa-pencil
+    p: small = link_to 'Add reference image', new_entry_reference_image_path(@entry)
+  
+  - if @entry.reference_images.any?  
+    h2 Reference images
+    .row
+    - @entry.reference_images.each do |ri|
+      .col-xs-6.col-md-2: .mute-heading: .image-row data-image-id='#{ri.id}'
+        h3
+          img src='#{ri.image.url}' class='img-responsive'
+        p
+          i.fa.fa-clock-o
+          |   created #{time_ago_in_words(ri.created_at)} ago
+        p = link_to 'delete',  entry_reference_image_path(@entry, ri),  method: :delete, data: { confirm: 'Are you sure?' }
