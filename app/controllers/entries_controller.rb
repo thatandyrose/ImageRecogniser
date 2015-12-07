@@ -39,10 +39,11 @@ class EntriesController < ApplicationController
 
   def invoke_search
     if reference_image = ReferenceImage.search_apis(params[:search_image])
-      @entry = reference_image.entry
+      redirect_to entry_path(reference_image.entry)
+    else
+      flash[:error] = 'No matches found!'
+      render :search
     end
-
-    render :search
   end
 
   private
