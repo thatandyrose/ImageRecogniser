@@ -19,6 +19,7 @@ gem "font-awesome-rails"
 gem 'httparty'
 gem 'httmultiparty'
 gem 'friendly_id', '~> 5.1.0'
+gem "bugsnag"
 
 group :development do
   gem 'better_errors'
